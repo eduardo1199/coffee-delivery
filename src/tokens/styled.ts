@@ -1,9 +1,4 @@
-/**
- * Do not edit directly
- * Generated on Fri, 10 Mar 2023 13:37:09 GMT
- */
-
-module.exports = {
+export const theme = {
   ColorBaseWhite: '#ffffff',
   ColorBaseBackground: '#fafafa',
   ColorBaseCard: '#f3f2f2',
@@ -20,4 +15,4 @@ module.exports = {
   ColorBrandYellowDark: '#c47f17',
   ColorBrandYellow: '#dbac2c',
   ColorBrandYellowLight: '#f1e9c9',
-}
+} as const

@@ -1,12 +1,15 @@
 import { GlobalStyle } from './styles/global'
+import { theme } from './tokens/styled'
+import { ThemeProvider } from 'styled-components'
+import { Home } from './pages/Home'
 
 function App() {
   return (
-    <>
-      <h1>Hello word</h1>
+    <ThemeProvider theme={theme}>
+      <Home />
 
       <GlobalStyle />
-    </>
+    </ThemeProvider>
   )
 }
 
