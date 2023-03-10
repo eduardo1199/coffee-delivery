@@ -8,12 +8,16 @@ export const GlobalStyle = createGlobalStyle`
   }
   :focus {
     outline: 0;
-  
   }
   body {
     -webkit-font-smoothing: antialiased;
+    background: ${(props) => props.theme.ColorBaseBackground};
   }
   body, input, textarea, button {
     font: 400 1rem Roboto, sans-serif;
+  }
+
+  button {
+    cursor: pointer;
   }
 `
