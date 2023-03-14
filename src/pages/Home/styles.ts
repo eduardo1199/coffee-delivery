@@ -98,5 +98,7 @@ export const ProductsContainer = styled.div`
 
 export const CoffeeContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 256px);
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 2rem;
 `
