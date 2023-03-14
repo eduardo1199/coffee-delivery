@@ -17,6 +17,10 @@ export const GlobalStyle = createGlobalStyle`
     font: 400 1rem Roboto, sans-serif;
   }
 
+  h1, h3, strong {
+    font: 400 1rem 'Baloo 2', sans-serif;
+  }
+
   button {
     cursor: pointer;
   }
