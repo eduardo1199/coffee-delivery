@@ -117,5 +117,10 @@ export const ButtonAddShopping = styled.button`
   color: ${(props) => props.theme.ColorBaseCard};
 
   background: ${(props) => props.theme.ColorBrandPurpleDark};
+  transition: background-color 0.2s;
   border-radius: 6px;
+
+  :hover {
+    background: ${(props) => props.theme.ColorBrandPurple};
+  }
 `

@@ -83,7 +83,7 @@ export const ServiceContainer = styled.div<ServiceContainerProps>`
 export const ProductsContainer = styled.div`
   max-width: 1440px;
 
-  margin: auto;
+  margin: 2rem auto;
 
   padding-right: 1rem;
   padding-left: 1rem;
