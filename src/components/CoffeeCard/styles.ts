@@ -101,6 +101,12 @@ export const ButtonAddOrRemoveContainer = styled.div`
       font-size: 1.2rem;
       color: ${(props) => props.theme.ColorBrandPurple};
     }
+
+    transition: color 0.2s;
+
+    :hover {
+      color: ${(props) => props.theme.ColorBrandPurpleDark};
+    }
   }
 `
 
