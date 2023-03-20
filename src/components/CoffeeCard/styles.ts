@@ -101,6 +101,12 @@ export const ButtonAddOrRemoveContainer = styled.div`
       font-size: 1.2rem;
       color: ${(props) => props.theme.ColorBrandPurple};
     }
+
+    transition: color 0.2s;
+
+    :hover {
+      color: ${(props) => props.theme.ColorBrandPurpleDark};
+    }
   }
 `
 
@@ -117,5 +123,10 @@ export const ButtonAddShopping = styled.button`
   color: ${(props) => props.theme.ColorBaseCard};
 
   background: ${(props) => props.theme.ColorBrandPurpleDark};
+  transition: background-color 0.2s;
   border-radius: 6px;
+
+  :hover {
+    background: ${(props) => props.theme.ColorBrandPurple};
+  }
 `

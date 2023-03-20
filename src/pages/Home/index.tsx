@@ -9,7 +9,7 @@ import {
   CoffeeContainer,
 } from './styles'
 
-import { ShoppingCart, Timer, Package, Coffee } from 'phosphor-react'
+import { ShoppingCart, Timer, Package, Coffee } from '@phosphor-icons/react'
 
 import CoffeeImg from '../../assets/coffee.svg'
 import { CoffeeCard } from '../../components/CoffeeCard'
