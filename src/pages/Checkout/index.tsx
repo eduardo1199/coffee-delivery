@@ -18,6 +18,12 @@ import {
   Form,
   FieldsContainer,
   PayCarContainer,
+  InputCEP,
+  InputsNumbersContainer,
+  InputLocationContainer,
+  InputBase,
+  InfoPay,
+  TypeCreditCard,
 } from './styles'
 
 export function Checkout() {
@@ -38,17 +44,22 @@ export function Checkout() {
                 </div>
               </Address>
               <FieldsContainer>
-                <input type="text" placeholder="CEP" />
-                <input type="text" placeholder="Rua" />
-                <input type="number" placeholder="Número" />
-                <input type="text" placeholder="Complemento" />
-                <input type="text" placeholder="Bairro" />
-                <input type="text" placeholder="Cidade" />
-                <input type="text" placeholder="UF" />
+                <InputCEP type="text" placeholder="CEP" />
+
+                <InputBase type="text" placeholder="Rua" />
+                <InputsNumbersContainer>
+                  <InputBase type="number" placeholder="Número" />
+                  <InputBase type="text" placeholder="Complemento" />
+                </InputsNumbersContainer>
+                <InputLocationContainer>
+                  <InputBase type="text" placeholder="Bairro" />
+                  <InputBase type="text" placeholder="Cidade" />
+                  <InputBase type="text" placeholder="UF" />
+                </InputLocationContainer>
               </FieldsContainer>
             </Form>
             <PayCarContainer>
-              <div>
+              <InfoPay>
                 <CurrencyDollarSimple size={22} />
                 <div>
                   <span>Pagamento</span>
@@ -57,22 +68,22 @@ export function Checkout() {
                     pagar
                   </p>
                 </div>
+              </InfoPay>
 
-                <div>
-                  <button type="button">
-                    <CreditCard size={16} />
-                    <span>CARTÃO DE CRÉDITO</span>
-                  </button>
-                  <button type="button">
-                    <Bank size={16} />
-                    <span>CARTÃO DE DÉBITO</span>
-                  </button>
-                  <button type="button">
-                    <Money size={16} />
-                    <span>DINHEIRO</span>
-                  </button>
-                </div>
-              </div>
+              <TypeCreditCard>
+                <button type="button">
+                  <CreditCard size={16} />
+                  <span>CARTÃO DE CRÉDITO</span>
+                </button>
+                <button type="button">
+                  <Bank size={16} />
+                  <span>CARTÃO DE DÉBITO</span>
+                </button>
+                <button type="button">
+                  <Money size={16} />
+                  <span>DINHEIRO</span>
+                </button>
+              </TypeCreditCard>
             </PayCarContainer>
           </FormContent>
         </FormContainer>

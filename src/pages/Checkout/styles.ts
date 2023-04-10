@@ -11,8 +11,8 @@ export const Content = styled.div`
   align-items: center;
   gap: 2rem;
 
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
 
   margin: 2.5rem auto;
 `
@@ -37,12 +37,14 @@ export const FormContent = styled.form`
   flex-direction: column;
 
   width: 640px;
+  gap: 0.75rem;
 `
 
 export const Form = styled.div`
   flex: 1;
   background: ${(props) => props.theme.ColorBaseCard};
   padding: 40px;
+  border-radius: 6px;
 `
 
 export const Address = styled.div`
@@ -72,11 +74,114 @@ export const Address = styled.div`
   }
 `
 
-export const FieldsContainer = styled.div`
-  display: grid;
-  grid-template-row: 200px;
+export const InputBase = styled.input`
+  height: 42px;
+  padding: 12px;
+
+  background: ${(props) => props.theme.ColorBaseInput};
+  border: 1px solid ${(props) => props.theme.ColorBaseButton};
+
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  color: ${(props) => props.theme.ColorBaseText};
+
+  :focus {
+    border: 1px solid ${(props) => props.theme.ColorBrandYellowDark};
+  }
 `
 
-export const PayCarContainer = styled.div``
+export const FieldsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`
+
+export const InputCEP = styled(InputBase)`
+  max-width: 200px;
+`
+
+export const InputsNumbersContainer = styled.div`
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0.875rem;
+`
+
+export const InputLocationContainer = styled.div`
+  display: grid;
+  grid-template-columns: 200px 276px 60px;
+  gap: 0.75rem;
+`
+
+export const PayCarContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  background: ${(props) => props.theme.ColorBaseCard};
+  border-radius: 6px;
+  padding: 40px;
+`
+
+export const InfoPay = styled.div`
+  display: flex;
+  gap: 0.5rem;
+
+  margin-bottom: 2rem;
+
+  svg {
+    color: ${(props) => props.theme.ColorBrandPurple};
+  }
+
+  div {
+    span {
+      font-size: 1rem;
+      font-weight: normal;
+      line-height: 21px;
+      color: ${(props) => props.theme.ColorBaseSubtitle};
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 18px;
+      color: ${(props) => props.theme.ColorBaseText};
+    }
+  }
+`
+
+export const TypeCreditCard = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    width: 178.67px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+
+    gap: 12px;
+    padding: 16px;
+
+    background: ${(props) => props.theme.ColorBaseButton};
+    border-radius: 6px;
+
+    svg {
+      color: ${(props) => props.theme.ColorBrandPurple};
+    }
+
+    span {
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 19px;
+      color: ${(props) => props.theme.ColorBaseText};
+    }
+  }
+`
 
 export const OrderContainer = styled.div``
