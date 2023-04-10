@@ -7,8 +7,8 @@ export const Container = styled.div`
 export const Content = styled.div`
   max-width: 1440px;
 
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
 
   margin: 5.875rem auto 6.75rem auto;
 
@@ -85,8 +85,8 @@ export const ProductsContainer = styled.div`
 
   margin: 2rem auto;
 
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
 
   h1 {
     font-weight: 800;
