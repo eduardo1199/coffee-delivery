@@ -11,8 +11,8 @@ export const Content = styled.div`
   align-items: center;
   gap: 2rem;
 
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
 
   margin: 2.5rem auto;
 `
@@ -37,46 +37,13 @@ export const FormContent = styled.form`
   flex-direction: column;
 
   width: 640px;
+  gap: 0.75rem;
 `
 
-export const Form = styled.div`
-  flex: 1;
-  background: ${(props) => props.theme.ColorBaseCard};
-  padding: 40px;
-`
-
-export const Address = styled.div`
-  display: flex;
-
-  align-items: start;
-  gap: 8px;
-
-  margin-bottom: 2rem;
-
-  svg {
-    color: ${(props) => props.theme.ColorBrandYellow};
-  }
-
-  span {
-    font-size: 16px;
-    line-height: 21px;
-    color: ${(props) => props.theme.ColorBaseSubtitle};
-    font-weight: normal;
-  }
-
-  p {
-    font-size: 14px;
-    line-height: 18px;
-    color: ${(props) => props.theme.ColorBaseText};
-    font-weight: normal;
-  }
-`
-
-export const FieldsContainer = styled.div`
+export const InputLocationContainer = styled.div`
   display: grid;
-  grid-template-row: 200px;
+  grid-template-columns: 200px 276px 60px;
+  gap: 0.75rem;
 `
-
-export const PayCarContainer = styled.div``
 
 export const OrderContainer = styled.div``
