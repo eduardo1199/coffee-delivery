@@ -46,4 +46,9 @@ export const InputLocationContainer = styled.div`
   gap: 0.75rem;
 `
 
-export const OrderContainer = styled.div``
+export const OrderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+`

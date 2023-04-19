@@ -17,6 +17,7 @@ import {
 } from './styles'
 import { FormData } from './components/FormData'
 import { PayTerm } from './components/PayTerm'
+import { CheckoutOrder } from './components/CheckoutOrder'
 
 export function Checkout() {
   return (
@@ -34,7 +35,8 @@ export function Checkout() {
         </FormContainer>
 
         <OrderContainer>
-          <span>Cafés selecionados</span>
+          <FormTitle>Cafés selecionados</FormTitle>
+          <CheckoutOrder />
         </OrderContainer>
       </Content>
     </Container>
