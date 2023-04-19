@@ -4,9 +4,9 @@ import {
   CoffeeCardContainer,
   ContainerSummary,
   ButtonContainer,
-  ButtonAddOrRemoveContainer,
   ButtonAddShopping,
 } from './styles'
+import { IncrementButton } from 'components/IncrementButton'
 
 export function CoffeeCard() {
   return (
@@ -22,15 +22,7 @@ export function CoffeeCard() {
       <ContainerSummary>
         <strong>9,99</strong>
         <ButtonContainer>
-          <ButtonAddOrRemoveContainer>
-            <button>
-              <span>-</span>
-            </button>
-            <span>1</span>
-            <button>
-              <span>+</span>
-            </button>
-          </ButtonAddOrRemoveContainer>
+          <IncrementButton />
           <ButtonAddShopping>
             <ShoppingCart />
           </ButtonAddShopping>

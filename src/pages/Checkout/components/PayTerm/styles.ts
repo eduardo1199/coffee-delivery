@@ -66,5 +66,10 @@ export const TypeCreditCard = styled.div`
       line-height: 19px;
       color: ${(props) => props.theme.ColorBaseText};
     }
+
+    :hover {
+      background: ${(props) => props.theme.ColorBaseHover};
+      transition: background-color 0.4s;
+    }
   }
 `
