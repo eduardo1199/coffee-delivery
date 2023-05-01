@@ -1,0 +1,69 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Expresso Tradicional",
+      "price": 9.90
+    },
+    {
+      "id": 2,
+      "name": "Expresso Americano",
+      "price": 9.90
+    },
+    {
+      "id": 3,
+      "name": "Expresso Cremoso",
+      "price": 9.90
+    },
+    {
+      "id": 4,
+      "name": "Expresso Gelado",
+      "price": 9.90
+    },
+    {
+      "id": 5,
+      "name": "Café com Leite",
+      "price": 9.90
+    },
+    {
+      "id": 6,
+      "name": "Latte",
+      "price": 9.90
+    },
+    {
+      "id": 7,
+      "name": "Capuccino",
+      "price": 9.90
+    },
+    {
+      "id": 8,
+      "name": "Macchiato",
+      "price": 9.90
+    },
+    {
+      "id": 9,
+      "name": "Mocaccino",
+      "price": 9.90
+    },
+    {
+      "id": 10,
+      "name": "Cubano",
+      "price": 9.90
+    },
+    {
+      "id": 11,
+      "name": "Havaiano",
+      "price": 9.90
+    },
+    {
+      "id": 12,
+      "name": "Árabe",
+      "price": 9.90
+    },
+    {
+      "id": 13,
+      "name": "Irlandês",
+      "price": 9.90
+    }
+  ]
+}
