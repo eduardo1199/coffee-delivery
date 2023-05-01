@@ -15,7 +15,7 @@ export function Orders() {
             <p>Expresso Tradicional</p>
 
             <ContainerButtons>
-              <IncrementButton />
+              {/* <IncrementButton /> */}
               <button type="button">
                 <Trash />
                 Remover

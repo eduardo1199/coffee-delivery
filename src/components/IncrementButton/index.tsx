@@ -1,13 +1,20 @@
+import { useState } from 'react'
 import { Container } from './styles'
 
-export function IncrementButton() {
+interface IncrementButtonProps {
+  quantity: number
+  onIncrement: () => void
+  onDecrement: () => void
+}
+
+export function IncrementButton(props: IncrementButtonProps) {
   return (
     <Container>
-      <button>
+      <button onClick={props.onDecrement}>
         <span>-</span>
       </button>
-      <span>1</span>
-      <button>
+      <span>{props.quantity}</span>
+      <button onClick={props.onIncrement}>
         <span>+</span>
       </button>
     </Container>

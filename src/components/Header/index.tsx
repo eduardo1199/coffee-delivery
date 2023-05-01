@@ -1,11 +1,15 @@
+import { useContext } from 'react'
 import { Container, ButtonCart, ButtonLocale } from './styles'
 import { useNavigate } from 'react-router-dom'
 
 import { Compass, ShoppingCart } from '@phosphor-icons/react'
 
 import logo from '../../assets/logo.svg'
+import { ProductsContext } from 'context/ProductsContext'
 
 export function Header() {
+  const { quantityOrderSummaryWithCartShopping } = useContext(ProductsContext)
+
   const navigator = useNavigate()
 
   function handleNavigateToCheckout() {
@@ -22,7 +26,9 @@ export function Header() {
         </ButtonLocale>
         <ButtonCart onClick={handleNavigateToCheckout}>
           <ShoppingCart size={22} />
-          <span>3</span>
+          {!!quantityOrderSummaryWithCartShopping && (
+            <span>{quantityOrderSummaryWithCartShopping}</span>
+          )}
         </ButtonCart>
       </div>
     </Container>

@@ -9,10 +9,14 @@ type Product = {
   type: TypeCoffee[]
   description: string
 }
+interface ProductSummary extends Product {
+  quantity: number
+}
 
 interface ProductContextProps {
   products: Product[]
   quantityOrderSummaryWithCartShopping: number
+  addProductInCartShopping: (id: number, quantity: number) => void
 }
 
 export const ProductsContext = createContext({} as ProductContextProps)
@@ -25,9 +29,37 @@ export function ProductContextProvider({
   children,
 }: ProductContextProviderProps) {
   const [products, setProducts] = useState<Product[]>([])
-  const [summaryOrders, setSummaryOrders] = useState<Product[]>([])
+  const [summaryOrders, setSummaryOrders] = useState<ProductSummary[]>([])
 
   const quantityOrderSummaryWithCartShopping = summaryOrders.length
+
+  function addProductInCartShopping(id: number, quantity: number) {
+    const findProductAddSummary = products.find((product) => product.id === id)!
+
+    const existProductInSummary = summaryOrders.some(
+      (product) => product.id === id,
+    )
+
+    if (existProductInSummary) {
+      setSummaryOrders((state) =>
+        state.map((product) => {
+          if (product.id === id) {
+            return {
+              ...product,
+              quantity: product.quantity + quantity,
+            }
+          } else {
+            return product
+          }
+        }),
+      )
+    } else {
+      setSummaryOrders((state) => [
+        ...state,
+        { ...findProductAddSummary, quantity },
+      ])
+    }
+  }
 
   useEffect(() => {
     async function getFetchProduct() {
@@ -41,7 +73,11 @@ export function ProductContextProvider({
 
   return (
     <ProductsContext.Provider
-      value={{ products, quantityOrderSummaryWithCartShopping }}
+      value={{
+        products,
+        quantityOrderSummaryWithCartShopping,
+        addProductInCartShopping,
+      }}
     >
       {children}
     </ProductsContext.Provider>
