@@ -86,3 +86,8 @@ export const ButtonAddShopping = styled.button`
     background: ${(props) => props.theme.ColorBrandPurple};
   }
 `
+
+export const CarouselType = styled.div`
+  display: flex;
+  gap: 12px;
+`

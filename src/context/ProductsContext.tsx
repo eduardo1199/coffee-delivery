@@ -12,6 +12,7 @@ type Product = {
 
 interface ProductContextProps {
   products: Product[]
+  quantityOrderSummaryWithCartShopping: number
 }
 
 export const ProductsContext = createContext({} as ProductContextProps)
@@ -26,6 +27,8 @@ export function ProductContextProvider({
   const [products, setProducts] = useState<Product[]>([])
   const [summaryOrders, setSummaryOrders] = useState<Product[]>([])
 
+  const quantityOrderSummaryWithCartShopping = summaryOrders.length
+
   useEffect(() => {
     async function getFetchProduct() {
       const products = await api.get<Product[]>('products')
@@ -37,7 +40,9 @@ export function ProductContextProvider({
   }, [])
 
   return (
-    <ProductsContext.Provider value={{ products }}>
+    <ProductsContext.Provider
+      value={{ products, quantityOrderSummaryWithCartShopping }}
+    >
       {children}
     </ProductsContext.Provider>
   )

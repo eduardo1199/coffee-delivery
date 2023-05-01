@@ -3,4 +3,5 @@ export enum TypeCoffee {
   milk = 'COM LEITE',
   alcoholic = 'ALCÓOLICO',
   iceCream = 'GELADO',
+  special = 'ESPECIAL',
 }

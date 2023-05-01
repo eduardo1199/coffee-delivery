@@ -5,6 +5,7 @@ import {
   ContainerSummary,
   ButtonContainer,
   ButtonAddShopping,
+  CarouselType,
 } from './styles'
 import { IncrementButton } from 'components/IncrementButton'
 import { TypeCoffee } from '../../types/productsType'
@@ -23,11 +24,15 @@ export function CoffeeCard(props: CoffeeCardProps) {
     <CoffeeCardContainer>
       <img src={traditional} alt="Coffee traditional" />
 
-      <h4>TRADICIONAL</h4>
+      <CarouselType>
+        {props.type.map((type) => (
+          <h4 key={type}>{type}</h4>
+        ))}
+      </CarouselType>
 
       <strong>{props.name}</strong>
 
-      <p>O tradicional café feito com água quente e grãos moídos</p>
+      <p>{props.description}</p>
 
       <ContainerSummary>
         <strong>{FormattedNumberPrice.format(props.price)}</strong>
