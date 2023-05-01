@@ -34,10 +34,12 @@ export function Checkout() {
           </FormContent>
         </FormContainer>
 
-        <OrderContainer>
+        <FormContainer>
           <FormTitle>Cafés selecionados</FormTitle>
-          <CheckoutOrder />
-        </OrderContainer>
+          <OrderContainer>
+            <CheckoutOrder />
+          </OrderContainer>
+        </FormContainer>
       </Content>
     </Container>
   )

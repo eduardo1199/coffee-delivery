@@ -8,10 +8,13 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext .ts,.tsx --fix",
-    "build:tokens": "style-dictionary build"
+    "build:tokens": "style-dictionary build",
+    "server": "json-server --watch src/service/db.json"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.5",
+    "axios": "^1.4.0",
+    "json-server": "^0.17.3",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

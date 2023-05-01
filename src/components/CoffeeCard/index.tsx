@@ -5,25 +5,68 @@ import {
   ContainerSummary,
   ButtonContainer,
   ButtonAddShopping,
+  CarouselType,
 } from './styles'
 import { IncrementButton } from 'components/IncrementButton'
+import { TypeCoffee } from '../../types/productsType'
+import { FormattedNumberPrice } from 'utils/formattedNumber'
+import { useContext, useState } from 'react'
+import { ProductsContext } from 'context/ProductsContext'
 
-export function CoffeeCard() {
+interface CoffeeCardProps {
+  name: string
+  id: number
+  price: number
+  type: TypeCoffee[]
+  description: string
+}
+
+export function CoffeeCard(props: CoffeeCardProps) {
+  const { addProductInCartShopping } = useContext(ProductsContext)
+
+  const [quantity, setQuantity] = useState<number>(0)
+
+  function incrementQuantity() {
+    setQuantity((state) => state + 1)
+  }
+
+  function decrementQuantity() {
+    if (quantity === 0) return
+
+    setQuantity((state) => state - 1)
+  }
+
+  function handleAddProductFromCart() {
+    const productId = props.id
+
+    addProductInCartShopping(productId, quantity)
+
+    setQuantity(0)
+  }
+
   return (
     <CoffeeCardContainer>
       <img src={traditional} alt="Coffee traditional" />
 
-      <h4>TRADICIONAL</h4>
+      <CarouselType>
+        {props.type.map((type) => (
+          <h4 key={type}>{type}</h4>
+        ))}
+      </CarouselType>
 
-      <strong>Expresso Tradicional</strong>
+      <strong>{props.name}</strong>
 
-      <p>O tradicional café feito com água quente e grãos moídos</p>
+      <p>{props.description}</p>
 
       <ContainerSummary>
-        <strong>9,99</strong>
+        <strong>{FormattedNumberPrice.format(props.price)}</strong>
         <ButtonContainer>
-          <IncrementButton />
-          <ButtonAddShopping>
+          <IncrementButton
+            onDecrement={decrementQuantity}
+            onIncrement={incrementQuantity}
+            quantity={quantity}
+          />
+          <ButtonAddShopping onClick={handleAddProductFromCart}>
             <ShoppingCart />
           </ButtonAddShopping>
         </ButtonContainer>

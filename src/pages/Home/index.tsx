@@ -13,8 +13,12 @@ import { ShoppingCart, Timer, Package, Coffee } from '@phosphor-icons/react'
 
 import CoffeeImg from '../../assets/coffee.svg'
 import { CoffeeCard } from '../../components/CoffeeCard'
+import { useContext } from 'react'
+import { ProductsContext } from 'context/ProductsContext'
 
 export function Home() {
+  const { products } = useContext(ProductsContext)
+
   return (
     <Container>
       <Header />
@@ -60,11 +64,18 @@ export function Home() {
         <h1>Nossos cafés</h1>
 
         <CoffeeContainer>
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
+          {products.map((product) => {
+            return (
+              <CoffeeCard
+                description={product.description}
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                type={product.type}
+              />
+            )
+          })}
         </CoffeeContainer>
       </ProductsContainer>
     </Container>
