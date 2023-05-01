@@ -7,20 +7,30 @@ import {
   ButtonAddShopping,
 } from './styles'
 import { IncrementButton } from 'components/IncrementButton'
+import { TypeCoffee } from '../../types/productsType'
+import { FormattedNumberPrice } from 'utils/formattedNumber'
 
-export function CoffeeCard() {
+interface CoffeeCardProps {
+  name: string
+  id: number
+  price: number
+  type: TypeCoffee[]
+  description: string
+}
+
+export function CoffeeCard(props: CoffeeCardProps) {
   return (
     <CoffeeCardContainer>
       <img src={traditional} alt="Coffee traditional" />
 
       <h4>TRADICIONAL</h4>
 
-      <strong>Expresso Tradicional</strong>
+      <strong>{props.name}</strong>
 
       <p>O tradicional café feito com água quente e grãos moídos</p>
 
       <ContainerSummary>
-        <strong>9,99</strong>
+        <strong>{FormattedNumberPrice.format(props.price)}</strong>
         <ButtonContainer>
           <IncrementButton />
           <ButtonAddShopping>

@@ -1,10 +1,13 @@
 import { api } from 'lib/api'
 import { ReactNode, createContext, useEffect, useState } from 'react'
+import { TypeCoffee } from 'types/productsType'
 
 type Product = {
   id: number
   name: string
   price: number
+  type: TypeCoffee[]
+  description: string
 }
 
 interface ProductContextProps {

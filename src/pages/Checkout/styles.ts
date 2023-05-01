@@ -8,7 +8,7 @@ export const Content = styled.div`
   max-width: 1440px;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
 
   padding-right: 3rem;
@@ -22,6 +22,7 @@ export const FormContainer = styled.div`
 
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 `
 
 export const FormTitle = styled.span`
@@ -47,8 +48,8 @@ export const InputLocationContainer = styled.div`
 `
 
 export const OrderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
   flex: 1;
+
+  border-radius: 6px 44px;
+  background: ${(props) => props.theme.ColorBaseCard};
 `

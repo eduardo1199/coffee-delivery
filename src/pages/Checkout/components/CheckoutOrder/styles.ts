@@ -6,7 +6,6 @@ export const Container = styled.div`
 
   gap: 1.5rem;
 
-  background: ${(props) => props.theme.ColorBaseCard};
   padding: 40px;
 `
 
