@@ -15,8 +15,11 @@ interface OrdersProps {
 }
 
 export function Orders(props: OrdersProps) {
-  const { decrementProductSummary, incrementProductSummary } =
-    useContext(ProductsContext)
+  const {
+    decrementProductSummary,
+    incrementProductSummary,
+    onRemoveSummaryProduct,
+  } = useContext(ProductsContext)
 
   function incrementQuantity() {
     incrementProductSummary(props.id)
@@ -26,6 +29,10 @@ export function Orders(props: OrdersProps) {
     if (props.quantity === 0) return
 
     decrementProductSummary(props.id)
+  }
+
+  function handleRemoveSummaryProduct() {
+    onRemoveSummaryProduct(props.id)
   }
 
   const currencyTotalOrder = FormattedNumberPrice.format(
@@ -47,7 +54,7 @@ export function Orders(props: OrdersProps) {
                 onIncrement={incrementQuantity}
                 quantity={props.quantity}
               />
-              <button type="button">
+              <button type="button" onClick={handleRemoveSummaryProduct}>
                 <Trash />
                 Remover
               </button>

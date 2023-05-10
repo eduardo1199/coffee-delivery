@@ -78,3 +78,29 @@ export const Total = styled.strong`
   text-align: end;
   font-size: 1.25rem;
 `
+
+export const ConfirmButton = styled.button`
+  display: flex;
+  justify-content: center;
+
+  padding: 12px 8px 12px 8px;
+
+  border: none;
+  background: ${(props) => props.theme.ColorBrandYellow};
+  border-radius: 6px;
+
+  span {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: ${(props) => props.theme.ColorBaseWhite};
+  }
+
+  :hover {
+    background: ${(props) => props.theme.ColorBrandYellowDark};
+    transition: background-color 0.4s;
+  }
+
+  :focus {
+    outline: 2px solid ${(props) => props.theme.ColorBrandYellowDark};
+  }
+`

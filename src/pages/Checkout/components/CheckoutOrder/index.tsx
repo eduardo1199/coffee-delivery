@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Orders } from '../Orders'
-import { Container, SummaryValue, Total } from './styles'
+import { Container, SummaryValue, Total, ConfirmButton } from './styles'
 import { ProductsContext } from 'context/ProductsContext'
 import { FormattedNumberPrice } from 'utils/formattedNumber'
 
@@ -37,6 +37,10 @@ export function CheckoutOrder() {
         <p>Total</p>
         <Total>{formattedTotalOrder}</Total>
       </SummaryValue>
+
+      <ConfirmButton>
+        <span>CONFIRMAR PEDIDO</span>
+      </ConfirmButton>
     </Container>
   )
 }

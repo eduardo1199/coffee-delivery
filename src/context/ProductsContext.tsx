@@ -20,6 +20,7 @@ interface ProductContextProps {
   addProductInCartShopping: (id: number, quantity: number) => void
   incrementProductSummary: (id: number) => void
   decrementProductSummary: (id: number) => void
+  onRemoveSummaryProduct: (id: number) => void
   summaryQuantityOrders: number
 }
 
@@ -107,6 +108,14 @@ export function ProductContextProvider({
     }
   }
 
+  function onRemoveSummaryProduct(id: number) {
+    const withoutOrderProductInSummary = summaryOrders.filter(
+      (product) => product.id !== id,
+    )
+
+    setSummaryOrders(withoutOrderProductInSummary)
+  }
+
   const summaryQuantityOrders = summaryOrders.reduce((acc, product) => {
     return acc + product.quantity * product.price
   }, 0)
@@ -131,6 +140,7 @@ export function ProductContextProvider({
         decrementProductSummary,
         incrementProductSummary,
         summaryQuantityOrders,
+        onRemoveSummaryProduct,
       }}
     >
       {children}

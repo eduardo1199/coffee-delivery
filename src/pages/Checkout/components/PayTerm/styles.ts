@@ -71,5 +71,10 @@ export const TypeCreditCard = styled.div`
       background: ${(props) => props.theme.ColorBaseHover};
       transition: background-color 0.4s;
     }
+
+    :focus {
+      outline: 1px solid ${(props) => props.theme.ColorBrandPurple};
+      background: ${(props) => props.theme.ColorBrandPurpleLight};
+    }
   }
 `
