@@ -16,7 +16,11 @@ interface ProductSummary extends Product {
 interface ProductContextProps {
   products: Product[]
   quantityOrderSummaryWithCartShopping: number
+  summaryOrders: ProductSummary[]
   addProductInCartShopping: (id: number, quantity: number) => void
+  incrementProductSummary: (id: number) => void
+  decrementProductSummary: (id: number) => void
+  summaryQuantityOrders: number
 }
 
 export const ProductsContext = createContext({} as ProductContextProps)
@@ -32,6 +36,48 @@ export function ProductContextProvider({
   const [summaryOrders, setSummaryOrders] = useState<ProductSummary[]>([])
 
   const quantityOrderSummaryWithCartShopping = summaryOrders.length
+
+  function incrementProductSummary(id: number) {
+    const existProductInSummary = summaryOrders.some(
+      (product) => product.id === id,
+    )
+
+    if (existProductInSummary) {
+      setSummaryOrders((state) =>
+        state.map((product) => {
+          if (product.id === id) {
+            return {
+              ...product,
+              quantity: product.quantity + 1,
+            }
+          } else {
+            return product
+          }
+        }),
+      )
+    }
+  }
+
+  function decrementProductSummary(id: number) {
+    const existProductInSummary = summaryOrders.some(
+      (product) => product.id === id,
+    )
+
+    if (existProductInSummary) {
+      setSummaryOrders((state) =>
+        state.map((product) => {
+          if (product.id === id) {
+            return {
+              ...product,
+              quantity: product.quantity - 1,
+            }
+          } else {
+            return product
+          }
+        }),
+      )
+    }
+  }
 
   function addProductInCartShopping(id: number, quantity: number) {
     const findProductAddSummary = products.find((product) => product.id === id)!
@@ -61,6 +107,10 @@ export function ProductContextProvider({
     }
   }
 
+  const summaryQuantityOrders = summaryOrders.reduce((acc, product) => {
+    return acc + product.quantity * product.price
+  }, 0)
+
   useEffect(() => {
     async function getFetchProduct() {
       const products = await api.get<Product[]>('products')
@@ -77,6 +127,10 @@ export function ProductContextProvider({
         products,
         quantityOrderSummaryWithCartShopping,
         addProductInCartShopping,
+        summaryOrders,
+        decrementProductSummary,
+        incrementProductSummary,
+        summaryQuantityOrders,
       }}
     >
       {children}
