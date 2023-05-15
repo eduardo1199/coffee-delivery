@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   Money,
   Compass,
@@ -9,7 +10,7 @@ import { Header } from '../../components/Header'
 
 import {
   Container,
-  Content,
+  ContentForm,
   FormContainer,
   FormContent,
   OrderContainer,
@@ -18,29 +19,68 @@ import {
 import { FormData } from './components/FormData'
 import { PayTerm } from './components/PayTerm'
 import { CheckoutOrder } from './components/CheckoutOrder'
+import { useForm, FormProvider } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ProductsContext } from 'context/ProductsContext'
+import { useNavigate } from 'react-router-dom'
+
+const newOrderCheckoutSchema = z.object({
+  cep: z.string().regex(/\d{5}-\d{3}/),
+  street: z.string(),
+  number: z.number(),
+  complement: z.string(),
+  city: z.string(),
+  uf: z.string().min(2).max(2),
+  neighborhood: z.string(),
+  payTerm: z.enum(['credit', 'debit', 'money']),
+})
+
+export type NewOrderCheckoutFormType = z.infer<typeof newOrderCheckoutSchema>
 
 export function Checkout() {
+  const { quantityOrderSummaryWithCartShopping } = useContext(ProductsContext)
+
+  const navigator = useNavigate()
+
+  const newOrderForm = useForm<NewOrderCheckoutFormType>({
+    resolver: zodResolver(newOrderCheckoutSchema),
+  })
+
+  function handleNewOrder(data: NewOrderCheckoutFormType) {
+    console.log(data)
+
+    if (quantityOrderSummaryWithCartShopping === 0) {
+      alert('Não há produtos no carrinho')
+      return
+    }
+
+    navigator('/finish')
+  }
+
   return (
     <Container>
       <Header />
 
-      <Content>
-        <FormContainer>
-          <FormTitle>Complete seu pedido</FormTitle>
-          <FormContent>
-            <FormData />
+      <FormProvider {...newOrderForm}>
+        <ContentForm onSubmit={newOrderForm.handleSubmit(handleNewOrder)}>
+          <FormContainer>
+            <FormTitle>Complete seu pedido</FormTitle>
+            <FormContent>
+              <FormData />
 
-            <PayTerm />
-          </FormContent>
-        </FormContainer>
+              <PayTerm />
+            </FormContent>
+          </FormContainer>
 
-        <FormContainer>
-          <FormTitle>Cafés selecionados</FormTitle>
-          <OrderContainer>
-            <CheckoutOrder />
-          </OrderContainer>
-        </FormContainer>
-      </Content>
+          <FormContainer>
+            <FormTitle>Cafés selecionados</FormTitle>
+            <OrderContainer>
+              <CheckoutOrder />
+            </OrderContainer>
+          </FormContainer>
+        </ContentForm>
+      </FormProvider>
     </Container>
   )
 }

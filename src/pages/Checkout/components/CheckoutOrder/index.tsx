@@ -38,7 +38,7 @@ export function CheckoutOrder() {
         <Total>{formattedTotalOrder}</Total>
       </SummaryValue>
 
-      <ConfirmButton>
+      <ConfirmButton type="submit">
         <span>CONFIRMAR PEDIDO</span>
       </ConfirmButton>
     </Container>

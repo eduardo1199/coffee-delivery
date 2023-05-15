@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100vw;
 `
 
-export const Content = styled.div`
+export const ContentForm = styled.form`
   max-width: 1440px;
 
   display: flex;
@@ -33,7 +33,7 @@ export const FormTitle = styled.span`
   margin-bottom: 3px;
 `
 
-export const FormContent = styled.form`
+export const FormContent = styled.div`
   display: flex;
   flex-direction: column;
 
