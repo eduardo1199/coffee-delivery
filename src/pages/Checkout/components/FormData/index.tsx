@@ -8,8 +8,12 @@ import {
   InputLocationContainer,
   InputsNumbersContainer,
 } from './styles'
+import { useFormContext } from 'react-hook-form'
+import { NewOrderCheckoutFormType } from 'pages/Checkout'
 
 export function FormData() {
+  const { register } = useFormContext<NewOrderCheckoutFormType>()
+
   return (
     <Form>
       <Address>
@@ -20,17 +24,29 @@ export function FormData() {
         </div>
       </Address>
       <FieldsContainer>
-        <InputCEP type="text" placeholder="CEP" />
+        <InputCEP type="text" placeholder="CEP" {...register('cep')} />
 
-        <InputBase type="text" placeholder="Rua" />
+        <InputBase type="text" placeholder="Rua" {...register('street')} />
         <InputsNumbersContainer>
-          <InputBase type="number" placeholder="Número" />
-          <InputBase type="text" placeholder="Complemento" />
+          <InputBase
+            type="number"
+            placeholder="Número"
+            {...register('number', { valueAsNumber: true })}
+          />
+          <InputBase
+            type="text"
+            placeholder="Complemento"
+            {...register('complement')}
+          />
         </InputsNumbersContainer>
         <InputLocationContainer>
-          <InputBase type="text" placeholder="Bairro" />
-          <InputBase type="text" placeholder="Cidade" />
-          <InputBase type="text" placeholder="UF" />
+          <InputBase
+            type="text"
+            placeholder="Bairro"
+            {...register('neighborhood')}
+          />
+          <InputBase type="text" placeholder="Cidade" {...register('city')} />
+          <InputBase type="text" placeholder="UF" {...register('uf')} />
         </InputLocationContainer>
       </FieldsContainer>
     </Form>

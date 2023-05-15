@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const PayCarContainer = styled.div`
   display: flex;
@@ -41,35 +41,51 @@ export const TypeCreditCard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
 
-  button {
-    width: 178.67px;
+interface PayTermButtonProps {
+  isActive: boolean
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border: none;
+export const PayTermButton = styled.button<PayTermButtonProps>`
+  width: 178.67px;
 
-    gap: 12px;
-    padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
 
-    background: ${(props) => props.theme.ColorBaseButton};
-    border-radius: 6px;
+  gap: 12px;
+  padding: 16px;
 
-    svg {
-      color: ${(props) => props.theme.ColorBrandPurple};
-    }
+  background: ${(props) => props.theme.ColorBaseButton};
+  border-radius: 6px;
 
-    span {
-      font-weight: normal;
-      font-size: 12px;
-      line-height: 19px;
-      color: ${(props) => props.theme.ColorBaseText};
-    }
-
-    :hover {
-      background: ${(props) => props.theme.ColorBaseHover};
-      transition: background-color 0.4s;
-    }
+  svg {
+    color: ${(props) => props.theme.ColorBrandPurple};
   }
+
+  span {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+    color: ${(props) => props.theme.ColorBaseText};
+  }
+
+  :hover {
+    background: ${(props) => props.theme.ColorBaseHover};
+    transition: background-color 0.4s;
+  }
+
+  :focus {
+    outline: 1px solid ${(props) => props.theme.ColorBrandPurple};
+    background: ${(props) => props.theme.ColorBrandPurpleLight};
+  }
+
+  ${(props) =>
+    props.isActive &&
+    css`
+      outline: 1px solid ${(props) => props.theme.ColorBrandPurple};
+      background: ${(props) => props.theme.ColorBrandPurpleLight};
+    `}
 `

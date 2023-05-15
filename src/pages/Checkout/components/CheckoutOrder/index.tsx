@@ -1,20 +1,46 @@
+import { useContext } from 'react'
 import { Orders } from '../Orders'
-import { Container, SummaryValue, Total } from './styles'
+import { Container, SummaryValue, Total, ConfirmButton } from './styles'
+import { ProductsContext } from 'context/ProductsContext'
+import { FormattedNumberPrice } from 'utils/formattedNumber'
 
 export function CheckoutOrder() {
+  const { summaryOrders, summaryQuantityOrders } = useContext(ProductsContext)
+
+  const formattedSummaryQuantity = FormattedNumberPrice.format(
+    summaryQuantityOrders,
+  )
+
+  const totalOrder = summaryQuantityOrders + 3.5
+
+  const formattedTotalOrder = FormattedNumberPrice.format(totalOrder)
+
   return (
     <Container>
-      <Orders />
-      <Orders />
-      <Orders />
+      {summaryOrders.map((summary) => {
+        return (
+          <Orders
+            key={summary.id}
+            id={summary.id}
+            name={summary.name}
+            quantity={summary.quantity}
+            value={summary.price}
+          />
+        )
+      })}
+
       <SummaryValue>
         <p>Total de itens</p>
-        <span>R$ 29,70</span>
+        <span>{formattedSummaryQuantity}</span>
         <p>Entrega</p>
         <span>R$ 3,50</span>
         <p>Total</p>
-        <Total>R$ 33,20</Total>
+        <Total>{formattedTotalOrder}</Total>
       </SummaryValue>
+
+      <ConfirmButton type="submit">
+        <span>CONFIRMAR PEDIDO</span>
+      </ConfirmButton>
     </Container>
   )
 }
