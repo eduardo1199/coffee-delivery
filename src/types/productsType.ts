@@ -5,3 +5,9 @@ export enum TypeCoffee {
   iceCream = 'GELADO',
   special = 'ESPECIAL',
 }
+
+export enum PaymentType {
+  credit = 'Cartão de Crédito',
+  debit = 'Cartão de Débito',
+  money = 'Dinheirp',
+}

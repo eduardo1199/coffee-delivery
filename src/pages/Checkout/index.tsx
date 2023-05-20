@@ -24,6 +24,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ProductsContext } from 'context/ProductsContext'
 import { useNavigate } from 'react-router-dom'
+import { PaymentType } from 'types/productsType'
 
 const newOrderCheckoutSchema = z.object({
   cep: z.string().regex(/\d{5}-\d{3}/),
@@ -39,7 +40,11 @@ const newOrderCheckoutSchema = z.object({
 export type NewOrderCheckoutFormType = z.infer<typeof newOrderCheckoutSchema>
 
 export function Checkout() {
-  const { quantityOrderSummaryWithCartShopping } = useContext(ProductsContext)
+  const {
+    quantityOrderSummaryWithCartShopping,
+    onSetSummaryOrders,
+    onSetPaymentType,
+  } = useContext(ProductsContext)
 
   const navigator = useNavigate()
 
@@ -48,13 +53,15 @@ export function Checkout() {
   })
 
   function handleNewOrder(data: NewOrderCheckoutFormType) {
-    console.log(data)
-
     if (quantityOrderSummaryWithCartShopping === 0) {
       alert('Não há produtos no carrinho')
       return
     }
 
+    const payTerm = PaymentType[`${data.payTerm}`]
+
+    onSetSummaryOrders([])
+    onSetPaymentType(payTerm)
     navigator('/finish')
   }
 

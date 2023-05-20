@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Checkout } from './pages/Checkout'
 import { Home } from './pages/Home'
+import { FinishOrder } from 'pages/FinishOrder'
 
 const routes = createBrowserRouter([
   {
@@ -10,6 +11,10 @@ const routes = createBrowserRouter([
   {
     path: '/checkout',
     element: <Checkout />,
+  },
+  {
+    path: '/finish',
+    element: <FinishOrder />,
   },
 ])
 
