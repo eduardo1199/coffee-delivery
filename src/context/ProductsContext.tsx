@@ -1,6 +1,6 @@
 import { api } from 'lib/api'
 import { ReactNode, createContext, useEffect, useState } from 'react'
-import { TypeCoffee } from 'types/productsType'
+import { TypeCoffee, PaymentType } from 'types/productsType'
 
 type Product = {
   id: number
@@ -22,6 +22,9 @@ interface ProductContextProps {
   decrementProductSummary: (id: number) => void
   onRemoveSummaryProduct: (id: number) => void
   summaryQuantityOrders: number
+  onSetSummaryOrders: (summaryOrder: ProductSummary[]) => void
+  infoOrder: PaymentType | null
+  onSetPaymentType: (value: PaymentType | null) => void
 }
 
 export const ProductsContext = createContext({} as ProductContextProps)
@@ -35,6 +38,7 @@ export function ProductContextProvider({
 }: ProductContextProviderProps) {
   const [products, setProducts] = useState<Product[]>([])
   const [summaryOrders, setSummaryOrders] = useState<ProductSummary[]>([])
+  const [infoOrder, setInfoOrder] = useState<PaymentType | null>(null)
 
   const quantityOrderSummaryWithCartShopping = summaryOrders.length
 
@@ -120,6 +124,14 @@ export function ProductContextProvider({
     return acc + product.quantity * product.price
   }, 0)
 
+  function onSetSummaryOrders(summaryOrder: ProductSummary[]) {
+    setSummaryOrders(summaryOrder)
+  }
+
+  function onSetPaymentType(value: PaymentType | null) {
+    setInfoOrder(value)
+  }
+
   useEffect(() => {
     async function getFetchProduct() {
       const products = await api.get<Product[]>('products')
@@ -141,6 +153,9 @@ export function ProductContextProvider({
         incrementProductSummary,
         summaryQuantityOrders,
         onRemoveSummaryProduct,
+        onSetSummaryOrders,
+        onSetPaymentType,
+        infoOrder,
       }}
     >
       {children}
