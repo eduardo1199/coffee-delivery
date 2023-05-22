@@ -1,12 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.header`
-  max-width: 1440px;
   height: 104px;
 
   margin: auto;
-  padding-right: 3rem;
-  padding-left: 3rem;
 
   display: flex;
   justify-content: space-between;

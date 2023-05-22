@@ -11,7 +11,7 @@ export function FinishOrder() {
   const { infoOrder } = useContext(ProductsContext)
 
   return (
-    <Container>
+    <>
       <Header />
 
       <Content>
@@ -49,6 +49,6 @@ export function FinishOrder() {
         </Summary>
         <img src={MotorImg} alt="motorcycle" />
       </Content>
-    </Container>
+    </>
   )
 }

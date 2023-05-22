@@ -20,7 +20,7 @@ export function Home() {
   const { products } = useContext(ProductsContext)
 
   return (
-    <Container>
+    <>
       <Header />
 
       <Content>
@@ -78,6 +78,6 @@ export function Home() {
           })}
         </CoffeeContainer>
       </ProductsContainer>
-    </Container>
+    </>
   )
 }

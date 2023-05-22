@@ -2,19 +2,38 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Checkout } from './pages/Checkout'
 import { Home } from './pages/Home'
 import { FinishOrder } from 'pages/FinishOrder'
+import { DefaultLayout } from 'layouts/DefaultLayout'
 
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <DefaultLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+    ],
   },
   {
-    path: '/checkout',
-    element: <Checkout />,
+    path: '/',
+    element: <DefaultLayout />,
+    children: [
+      {
+        path: '/checkout',
+        element: <Checkout />,
+      },
+    ],
   },
   {
-    path: '/finish',
-    element: <FinishOrder />,
+    path: '/',
+    element: <DefaultLayout />,
+    children: [
+      {
+        path: '/finish',
+        element: <FinishOrder />,
+      },
+    ],
   },
 ])
 
