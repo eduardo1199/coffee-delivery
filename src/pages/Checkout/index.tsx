@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import {
   Money,
   Compass,
@@ -65,8 +65,14 @@ export function Checkout() {
     navigator('/finish')
   }
 
+  useEffect(() => {
+    if (quantityOrderSummaryWithCartShopping === 0) {
+      navigator('/')
+    }
+  }, [quantityOrderSummaryWithCartShopping, navigator])
+
   return (
-    <Container>
+    <>
       <Header />
 
       <FormProvider {...newOrderForm}>
@@ -88,6 +94,6 @@ export function Checkout() {
           </FormContainer>
         </ContentForm>
       </FormProvider>
-    </Container>
+    </>
   )
 }

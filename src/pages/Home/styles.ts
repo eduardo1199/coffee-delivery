@@ -7,14 +7,17 @@ export const Container = styled.div`
 export const Content = styled.div`
   max-width: 1440px;
 
-  padding-right: 3rem;
-  padding-left: 3rem;
-
   margin: 5.875rem auto 6.75rem auto;
 
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media (max-width: 876px) {
+    img {
+      display: none;
+    }
+  }
 `
 
 export const SectionAbout = styled.div`
@@ -35,6 +38,10 @@ export const SectionAbout = styled.div`
 
     margin-bottom: 4.125rem;
     margin-top: 1rem;
+  }
+
+  @media (max-width: 876px) {
+    max-width: none;
   }
 `
 
@@ -84,9 +91,6 @@ export const ProductsContainer = styled.div`
   max-width: 1440px;
 
   margin: 2rem auto;
-
-  padding-right: 3rem;
-  padding-left: 3rem;
 
   h1 {
     font-weight: 800;

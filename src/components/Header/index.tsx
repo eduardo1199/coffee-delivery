@@ -16,6 +16,8 @@ export function Header() {
     navigator('/checkout')
   }
 
+  const isEmptyQuantityOrderSummary = quantityOrderSummaryWithCartShopping === 0
+
   return (
     <Container>
       <img src={logo} alt="coffee delivery" />
@@ -24,7 +26,10 @@ export function Header() {
           <Compass size={22} />
           <span>Porto Alegre, RS</span>
         </ButtonLocale>
-        <ButtonCart onClick={handleNavigateToCheckout}>
+        <ButtonCart
+          onClick={handleNavigateToCheckout}
+          disabled={isEmptyQuantityOrderSummary}
+        >
           <ShoppingCart size={22} />
           {!!quantityOrderSummaryWithCartShopping && (
             <span>{quantityOrderSummaryWithCartShopping}</span>
