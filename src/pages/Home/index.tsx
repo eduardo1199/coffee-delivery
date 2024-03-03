@@ -64,7 +64,7 @@ export function Home() {
         <h1>Nossos cafés</h1>
 
         <CoffeeContainer>
-          {products.map((product) => {
+          {(products ?? []).map((product) => {
             return (
               <CoffeeCard
                 description={product.description}
